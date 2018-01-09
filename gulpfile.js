@@ -25,12 +25,17 @@ const copyFiles = [
 
 gulp.task('categories', function(done) {
     let categories = fs.readdirSync(CATEGORIES_DIR);
-    console.log(`Found ${categories.length} categories`);
-    categories = categories.map(category => path.basename(category, '.json'));
+    let cats = [];
+    
+    categories.forEach(cat => {
+        if(cat === 'README.md') return;
+        cats.push(path.basename(cat, '.json'));
+    });
+    
     console.log('Writing categories.json...');
     fs.outputJSONSync(CATEGORIES_JSON, categories);
 
-    let redirects = categories.map(category => `/${category} /index.html 200`);
+    let redirects = cats.map(category => `/${category} /index.html 200`);
     console.log('Writing _redirects file...');
     fs.outputFileSync(REDIRECTS_FILE, redirects.join("\n"));
     
