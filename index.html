@@ -20,7 +20,7 @@
         
         <div class="categories">
             <span class="cat-link" v-for="cat in categories">
-                [<a :href="'/' + cat" v-text="cat" v-if="category !== cat"></a><span class="selected" v-if="category == cat" v-text="cat"></span>]
+                [<a :href="'/' + (cat == 'default'? '' : cat)" v-text="cat" v-if="category !== cat"></a><span class="selected" v-if="category == cat" v-text="cat"></span>]
             </span>
         </div>
     </div>
