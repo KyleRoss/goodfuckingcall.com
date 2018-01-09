@@ -33,7 +33,7 @@ gulp.task('categories', function(done) {
     });
     
     console.log('Writing categories.json...');
-    fs.outputJSONSync(CATEGORIES_JSON, categories);
+    fs.outputJSONSync(CATEGORIES_JSON, cats);
 
     let redirects = cats.map(category => `/${category} /index.html 200`);
     console.log('Writing _redirects file...');
