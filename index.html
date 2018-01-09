@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Good Fucking Call</title>
+    <meta name="description" content="Good fucking call, bro...">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link type="text/plain" rel="author" href="https://goodfuckingcall.com/humans.txt">
+    <link type="text/css" href="/assets/app.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <div class="sarcasm">
+            <div class="text" v-html="random"></div>
+            
+            Good fucking call, bro...
+        </div>
+        
+        <div class="categories">
+            <span class="cat-link" v-for="cat in categories">
+                [<a :href="'/' + cat" v-text="cat" v-if="category !== cat"></a><span class="selected" v-if="category == cat" v-text="cat"></span>]
+            </span>
+        </div>
+    </div>
+    
+    <div class="submit">
+        <a href="https://github.com/KyleRoss/goodfuckingcall.com" target="_blank">Submit</a>
+    </div>
+    
+    <script type="text/javascript" src="/assets/vue.min.js"></script>
+    <script type="text/javascript" src="/assets/app.js"></script>
+    <script>
+        window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+        ga('create','UA-15503420-11','auto');ga('send','pageview')
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+</body>
+</html>

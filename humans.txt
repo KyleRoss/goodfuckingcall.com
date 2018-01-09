@@ -1,0 +1,11 @@
+/* TEAM */
+Your title: Kyle Ross
+Site: thejavascriptguy@gmail.com
+Twitter: @kylerross
+Location: South Carolina, USA
+
+/* SITE */
+Last update: YYYY/MM/DD
+Standards: HTML5, CSS3
+Components: Netlify
+Software: Sublime Text 3
