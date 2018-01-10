@@ -87,6 +87,11 @@ gulp.task('copy', function() {
         .pipe(copy('./dist'));
 });
 
+gulp.task('favicon', function() {
+    return gulp.src('./favicon/*')
+        .pipe(copy('./dist', { prefix: 1 }));
+});
+
 gulp.task('server', ['build'], function() {
     let server = gls.static('dist', 8888);
     server.start();
@@ -102,7 +107,7 @@ gulp.task('watch', ['build'], function() {
 });
 
 // build task
-gulp.task('build', ['categories', 'sitemap', 'js', 'copy']);
+gulp.task('build', ['categories', 'sitemap', 'js', 'copy', 'favicon']);
 
 // serve task
 gulp.task('serve', ['build', 'server', 'watch']);
