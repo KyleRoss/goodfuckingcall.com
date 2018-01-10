@@ -5,12 +5,15 @@ const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 const copy = require('gulp-copy');
 const gls = require('gulp-live-server');
+const moment = require('moment');
+const sm = require('sitemap');
 const path = require('path');
 const fs = require('fs-extra');
 
 const CATEGORIES_DIR = path.join(__dirname, 'categories');
 const CATEGORIES_JSON = path.join(__dirname, 'categories.json');
 const REDIRECTS_FILE = path.join(__dirname, '_redirects');
+const SITEMAP = path.join(__dirname, 'sitemap.xml');
 
 const copyFiles = [
     'robots.txt',
@@ -18,20 +21,20 @@ const copyFiles = [
     'index.html',
     'categories/*',
     'categories.json',
+    'sitemap.xml',
     '_redirects',
     'assets/*'
 ];
 
+let categories = fs.readdirSync(CATEGORIES_DIR);
+let cats = [];
+
+categories.forEach(cat => {
+    if(cat === 'README.md') return;
+    cats.push(path.basename(cat, '.json'));
+});
 
 gulp.task('categories', function(done) {
-    let categories = fs.readdirSync(CATEGORIES_DIR);
-    let cats = [];
-    
-    categories.forEach(cat => {
-        if(cat === 'README.md') return;
-        cats.push(path.basename(cat, '.json'));
-    });
-    
     console.log('Writing categories.json...');
     fs.outputJSONSync(CATEGORIES_JSON, cats);
 
@@ -39,6 +42,32 @@ gulp.task('categories', function(done) {
     console.log('Writing _redirects file...');
     fs.outputFileSync(REDIRECTS_FILE, redirects.join("\n"));
     
+    done();
+});
+
+gulp.task('sitemap', function(done) {
+    let lastmod = moment().format('YYYY-MM-DD');
+    let urls = [
+        { url: '/', changefreq: 'daily', priority: 0.7, lastmod }
+    ];
+    
+    cats.forEach(cat => {
+        if(cat === 'default') return;
+        urls.push({
+            url: `/${cat}`,
+            changefreq: 'daily',
+            priority: 0.5,
+            lastmod
+        });
+    });
+    
+    let sitemap = sm.createSitemap ({
+        hostname: 'https://goodfuckingcall.com',
+        cacheTime: 600000,
+        urls: urls
+    });
+    
+    fs.outputFileSync(SITEMAP, sitemap.toString());
     done();
 });
 
@@ -73,7 +102,7 @@ gulp.task('watch', ['build'], function() {
 });
 
 // build task
-gulp.task('build', ['categories', 'js', 'copy']);
+gulp.task('build', ['categories', 'sitemap', 'js', 'copy']);
 
 // serve task
 gulp.task('serve', ['build', 'server', 'watch']);

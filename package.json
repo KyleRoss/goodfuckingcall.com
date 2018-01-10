@@ -26,6 +26,8 @@
     "gulp-concat": "^2.6.1",
     "gulp-copy": "^1.1.0",
     "gulp-live-server": "0.0.31",
-    "gulp-uglify": "^3.0.0"
+    "gulp-uglify": "^3.0.0",
+    "moment": "^2.20.1",
+    "sitemap": "^1.13.0"
   }
 }
