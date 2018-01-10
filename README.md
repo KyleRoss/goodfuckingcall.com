@@ -38,7 +38,7 @@ Same as adding phrases, but you just need to add a new `.json` file into the `ca
 2. You must submit at least 5 phrases when creating a category.
 3. Don't create a category around a single person unless they are significant (nobody gives a shit about Sam's Mom).
 4. JSON should be in proper array format and checked prior to submitting.
-5. Right now, categories are singal words, but multiple words will be supported soon (get a head start by adding a dash in between words `stupid-moms.json`).
+5. **NEW** Category names can be multiple words, just put a dash in the json file name.
 6. Same as phrases, cannot be racist or overly offensive.
 
 ### Code Changes
