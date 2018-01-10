@@ -5,6 +5,7 @@ const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 const copy = require('gulp-copy');
 const gls = require('gulp-live-server');
+const iife = require('gulp-iife');
 const moment = require('moment');
 const sm = require('sitemap');
 const path = require('path');
@@ -19,6 +20,7 @@ const copyFiles = [
     'robots.txt',
     'humans.txt',
     'index.html',
+    '404.html',
     'categories/*',
     'categories.json',
     'sitemap.xml',
@@ -72,8 +74,11 @@ gulp.task('sitemap', function(done) {
 });
 
 gulp.task('js', function() {
-    return gulp.src(['./src/vendor/*.js', './src/*.js'])
+    return gulp.src(['./src/vendor/*.js', './src/components/*.js', './src/*.js'])
         .pipe(concat('app.js'))
+        .pipe(iife({
+            params: ['window', 'Vue']
+        }))
         .pipe(babel({
             compact: false,
             presets: ['es2015']
@@ -99,11 +104,16 @@ gulp.task('server', ['build'], function() {
     gulp.watch('./(assets|src)/**/*.(js|css)', function(file) {
         server.notify.apply(server, [file]);
     });
+    
+    gulp.watch(copyFiles, function(file) {
+        server.notify.apply(server, [file]);
+    });
 });
 
 gulp.task('watch', ['build'], function() {
-    gulp.watch('./src/*.js', ['js']);
+    gulp.watch('./src/**/*.js', ['js']);
     gulp.watch('./categories/*.json', ['categories']);
+    gulp.watch(copyFiles, ['copy']);
 });
 
 // build task

@@ -39,21 +39,8 @@
 
 <body>
     <div id="app">
-        <div class="sarcasm center">
-            <h2 class="text" v-html="random"></h2>
-            
-            <h1 class="bold italic">Good fucking call, bro...</h1>
-            
-            <div class="refresh center small">
-                <a href="#" @click.prevent="getRandom()">another?</a>
-            </div>
-        </div>
-        
-        <div class="categories center small">
-            <span class="cat-link" v-for="cat in categories">
-                [<a :href="'/' + (cat == 'default'? '' : cat)" v-text="cat" v-if="category !== cat"></a><span class="bold" v-if="category == cat" v-text="cat"></span>]
-            </span>
-        </div>
+        <gfc v-on:refresh="getRandom()" :random="random"></gfc>
+        <categories :categories="categories" :category="category" :transform="transformCategory" :set="setCategory"></categories>
     </div>
     
     <div class="links center small">
