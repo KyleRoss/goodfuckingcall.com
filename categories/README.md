@@ -9,6 +9,9 @@ This is the default category, the one everyone sees after they are tricked into 
 ### programming (@kyleross)
 I'm a programmer and chances you are too, so add your favorite sarcasms that have to do with programming. There are plenty of them out there!
 
+### job (@kyleross)
+Work/job related phrases. Something you've seen in the office or wanted to do to your boss.
+
 ### shitfield (@kyleross)
 This is my **one** exception to the "don't create a category about a person that is not significant" and "no inside jokes". This one contains some of the best "isms" from a good friend of ours and just had to be somewhere. Don't submit new ones to this category unless you know him.
 
