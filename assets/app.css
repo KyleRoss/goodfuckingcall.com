@@ -90,3 +90,8 @@ body {
     font-weight: normal;
     font-style: normal;
 }
+
+.social {
+    text-align: center;
+    margin-top: 50px;
+}
