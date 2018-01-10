@@ -82,3 +82,11 @@ body {
     font-size: 0.8rem;
     margin-top: 50px;
 }
+
+.refresh {
+    text-align: center;
+    font-size: 0.8rem;
+    margin-top: 20px;
+    font-weight: normal;
+    font-style: normal;
+}
