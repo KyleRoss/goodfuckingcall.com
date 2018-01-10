@@ -39,28 +39,28 @@
 
 <body>
     <div id="app">
-        <div class="sarcasm">
+        <div class="sarcasm center">
             <h2 class="text" v-html="random"></h2>
             
-            <h1>Good fucking call, bro...</h1>
+            <h1 class="bold italic">Good fucking call, bro...</h1>
             
-            <div class="refresh">
+            <div class="refresh center small">
                 <a href="#" @click.prevent="getRandom()">another?</a>
             </div>
         </div>
         
-        <div class="categories">
+        <div class="categories center small">
             <span class="cat-link" v-for="cat in categories">
-                [<a :href="'/' + (cat == 'default'? '' : cat)" v-text="cat" v-if="category !== cat"></a><span class="selected" v-if="category == cat" v-text="cat"></span>]
+                [<a :href="'/' + (cat == 'default'? '' : cat)" v-text="cat" v-if="category !== cat"></a><span class="bold" v-if="category == cat" v-text="cat"></span>]
             </span>
         </div>
     </div>
     
-    <div class="submit">
-        <a href="https://github.com/KyleRoss/goodfuckingcall.com" target="_blank">Submit</a>
+    <div class="submit center small">
+        <a href="https://github.com/KyleRoss/goodfuckingcall.com" target="_blank" rel="noopener">Submit</a>
     </div>
     
-    <div class="addthis_inline_share_toolbox social"></div>
+    <div class="addthis_inline_share_toolbox social center"></div>
     
     <script type="text/javascript" src="/assets/vue.min.js"></script>
     <script type="text/javascript" src="/assets/app.js"></script>
