@@ -95,3 +95,7 @@ body {
     text-align: center;
     margin-top: 50px;
 }
+
+@media screen and (min-width: 480px) and (max-width: 960px) {
+    /* satify SEO requirements */
+}
