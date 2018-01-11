@@ -18,7 +18,7 @@ The more content, the better. Just follow some basic steps and rules:
 #### Phrase Rules
 
 1. Should be hilarious and sound right when adding "Good fucking call, bro..." at the end of it.
-2. Should be within 1 to 20 words max (unless it's really good).
+2. Should be within 1 to 20 words max (unless it's really good). Try to keep it all one one line (no line breaks).
 3. Should not include identifiable information (ex. phone number, addresses, credit card numbers, etc.)
 4. Should not be racist or offensive, but can contain swears.
 5. Make sure it fits within the category in which you are adding it to.
@@ -27,7 +27,14 @@ The more content, the better. Just follow some basic steps and rules:
 8. I can add inside jokes, but you shouldn't unless they are absolutely hilarious.
 9. Do not remove phrases because you do not like them, submit an issue and let us know why you think one should be removed.
 10. Try to submit as many phrases as you can in one pull request, it will make it faster getting them all out there.
-10. IDK, use common sense.
+11. IDK, use common sense.
+
+#### Allowed Code in Phrases
+* HTML is allowed, but will be vetted prior to merging in. The following tags is usually fine: `b,strong,ul,sup,sub,em,i`
+    - Images are allowed, but must be no longer than 500x500 pixels in size and make sense.
+    - Script tags and other tags in which could be malicious is not allowed.
+    - Links will be allowed if only they are relavant and not for advertising purposes.
+* Emojis! You can add emojis by wrapping the name in colons (ex. `:astonished:`). Use emoji names from [here](https://afeld.github.io/emoji-css/) without including the prefix `em-` (ex. if the name is `em-avocado`, just use `:avacado:`).
 
 ### Adding Categories
 Same as adding phrases, but you just need to add a new `.json` file into the `categories/` directory in the repo. The name of the file should be the category name (ex. `categories/stupid.json`). Be sure to add it to the README in that directory!
