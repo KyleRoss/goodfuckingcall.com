@@ -4,3 +4,4 @@ dist
 _redirects
 categories.json
 sitemap.xml
+/categories/all.json

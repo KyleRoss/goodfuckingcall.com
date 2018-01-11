@@ -2,9 +2,10 @@
 You made it to the categories! This tidbit of documentation is to outline the categories in which all the phrases/sarcasms are defined. **NOTE:** Read the rules in the repo README about adding categories and phrases.
 
 ## Category Definitions
+**NEW:** By default, we concatenate all of the phrases into one file on build and now people will see one random one from the whole shebang.
 
-### default (@kyleross)
-This is the default category, the one everyone sees after they are tricked into coming to this stupid site. It can contain any generic sarcasms that just don't fit anywhere else or that you cannot come up with enough phrases to start a category for it. They MUST be relavant to most people, so don't add one in which at least 70% of people would get.
+### misc (@kyleross)
+TIt can contain any generic sarcasms that just don't fit anywhere else or that you cannot come up with enough phrases to start a category for it. They MUST be relavant to most people, so don't add one in which at least 70% of people wouldn't get.
 
 ### programming (@kyleross)
 I'm a programmer and chances you are too, so add your favorite sarcasms that have to do with programming. There are plenty of them out there!

@@ -50,10 +50,10 @@ window.GFC = window.GFC || new Vue({
         },
         
         setCategory(category) {
-            this.category = category || 'default';
+            this.category = category || 'all';
             document.title = 
-                this.category !== 'default'?
-                    `Good Fucking ${this.transformCategory(this.category)} Call, Bro...` :
+                this.category !== 'all'?
+                    `${this.transformCategory(this.category)}, Good Fucking Call Bro...` :
                     'Good Fucking Call';
             
             this.getSarcasms();
@@ -61,7 +61,7 @@ window.GFC = window.GFC || new Vue({
     },
     
     created() {
-        this.setCategory(window.location.pathname.replace(/^\//, '') || 'default');
+        this.setCategory(window.location.pathname.replace(/^\//, '') || 'all');
         this.getCategories();
     }
 });

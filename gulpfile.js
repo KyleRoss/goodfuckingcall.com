@@ -13,6 +13,7 @@ const fs = require('fs-extra');
 
 const CATEGORIES_DIR = path.join(__dirname, 'categories');
 const CATEGORIES_JSON = path.join(__dirname, 'categories.json');
+const ALL_JSON = path.join(CATEGORIES_DIR, 'all.json');
 const REDIRECTS_FILE = path.join(__dirname, '_redirects');
 const SITEMAP = path.join(__dirname, 'sitemap.xml');
 
@@ -29,16 +30,23 @@ const copyFiles = [
 ];
 
 let categories = fs.readdirSync(CATEGORIES_DIR);
-let cats = [];
+let cats = ['all'],
+    all = [];
 
 categories.forEach(cat => {
-    if(cat === 'README.md') return;
+    if(cat === 'README.md' || cat === 'all.json') return;
     cats.push(path.basename(cat, '.json'));
+    
+    let content = fs.readJSONSync(path.join(CATEGORIES_DIR, cat));
+    all = all.concat(content);
 });
 
 gulp.task('categories', function(done) {
     console.log('Writing categories.json...');
     fs.outputJSONSync(CATEGORIES_JSON, cats);
+    
+    console.log('Writing all.json...');
+    fs.outputJSONSync(ALL_JSON, all);
 
     let redirects = cats.map(category => `/${category} /index.html 200`);
     console.log('Writing _redirects file...');
@@ -54,7 +62,7 @@ gulp.task('sitemap', function(done) {
     ];
     
     cats.forEach(cat => {
-        if(cat === 'default') return;
+        if(cat === 'all') return;
         urls.push({
             url: `/${cat}`,
             changefreq: 'daily',

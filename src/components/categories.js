@@ -14,7 +14,7 @@ Vue.component('categories', {
             return this.categories.map(cat => {
                 return {
                     id: cat,
-                    link: `/${cat === 'default'? '' : cat}`,
+                    link: `/${cat === 'all'? '' : cat}`,
                     text: this.transform(cat),
                     selected: cat === this.category
                 };
@@ -34,7 +34,7 @@ Vue.component('categories', {
                 return true;
             }
             
-            window.history.pushState(null, null, cat.id === 'default'? '/' : cat.id);
+            window.history.pushState(null, null, cat.id === 'all'? '/' : cat.id);
             this.set(cat.id);
         }
     }
