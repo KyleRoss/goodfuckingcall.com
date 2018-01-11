@@ -13,6 +13,9 @@ I'm a programmer and chances you are too, so add your favorite sarcasms that hav
 ### job (@kyleross)
 Work/job related phrases. Something you've seen in the office or wanted to do to your boss.
 
+### restroom (@kyleross)
+Restroom related phrases (aka potty jokes).
+
 ### shitfield (@kyleross)
 This is my **one** exception to the "don't create a category about a person that is not significant" and "no inside jokes". This one contains some of the best "isms" from a good friend of ours and just had to be somewhere. Don't submit new ones to this category unless you know him.
 
