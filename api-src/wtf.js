@@ -14,6 +14,7 @@ function getRandom(arr) {
 
 exports.handler = function(event, context, callback) {
     let category = event.queryStringParameters.category || 'random';
+    if(category === 'random') category = getRandom(randomCategories);
     
     if(categories.indexOf(category) === -1) {
         return callback(null, {
@@ -22,8 +23,6 @@ exports.handler = function(event, context, callback) {
         });
     }
     
-    if(category === 'random') category = getRandom(randomCategories);
-        
     return callback(null, {
         statusCode: 200,
         body: getRandom(phrases[category])

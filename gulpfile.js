@@ -57,6 +57,8 @@ gulp.task('categories', function(done) {
     fs.outputJSONSync(BYCAT_JSON, byCat);
 
     let redirects = cats.map(category => `/${category} /index.html 200`);
+    redirects.push('/api/wtf /.netlify/functions/wtf 200');
+    redirects.push('/api/categories /.netlify/functions/categories 200');
     console.log('Writing _redirects file...');
     fs.outputFileSync(REDIRECTS_FILE, redirects.join("\n"));
     
