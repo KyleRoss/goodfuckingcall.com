@@ -1,6 +1,6 @@
 "use strict";
-const categories = require('../categories.json');
-const phrases = require('../byCategory.json');
+const categories = require('./categories.json');
+const phrases = require('./byCategory.json');
 
 const randomCategories = [
     'misc',

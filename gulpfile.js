@@ -14,9 +14,11 @@ const fs = require('fs-extra');
 const CATEGORIES_DIR = path.join(__dirname, 'categories');
 const CATEGORIES_JSON = path.join(__dirname, 'categories.json');
 const ALL_JSON = path.join(CATEGORIES_DIR, 'all.json');
-const BYCAT_JSON = path.join(__dirname, 'byCategory.json');
 const REDIRECTS_FILE = path.join(__dirname, '_redirects');
 const SITEMAP = path.join(__dirname, 'sitemap.xml');
+
+const CATEGORIES_JSON_API = path.join(__dirname, 'api/categories.json');
+const BYCAT_JSON_API = path.join(__dirname, 'api/byCategory.json');
 
 const copyFiles = [
     'robots.txt',
@@ -49,11 +51,14 @@ gulp.task('categories', function(done) {
     console.log('Writing categories.json...');
     fs.outputJSONSync(CATEGORIES_JSON, cats);
     
+    console.log('Writing categories.json for API...');
+    fs.outputJSONSync(CATEGORIES_JSON_API, cats);
+    
     console.log('Writing all.json...');
     fs.outputJSONSync(ALL_JSON, all);
     
     console.log('Writing byCategory.json...');
-    fs.outputJSONSync(BYCAT_JSON, byCat);
+    fs.outputJSONSync(BYCAT_JSON_API, byCat);
 
     let redirects = cats.map(category => `/${category} /index.html 200`);
     console.log('Writing _redirects file...');
