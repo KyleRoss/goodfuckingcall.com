@@ -2,6 +2,7 @@
 node_modules
 dist
 _redirects
+api
 categories.json
 byCategory.json
 sitemap.xml
