@@ -3,5 +3,6 @@ node_modules
 dist
 _redirects
 categories.json
+byCategory.json
 sitemap.xml
 /categories/all.json
