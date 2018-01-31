@@ -1,5 +1,5 @@
 "use strict";
-let categories = require('./categories.json');
+let categories = require('../categories.json');
 
 exports.handler = function(event, context, callback) {
     return callback(null, {
