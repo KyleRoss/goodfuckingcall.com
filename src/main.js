@@ -19,6 +19,7 @@ window.GFC = window.GFC || new Vue({
         },
         
         getRandom() {
+            this.random = {};
             this.loading = true;
             
             let url = '/.netlify/functions/wtf';
