@@ -40,6 +40,11 @@
 
 <body>
     <div id="app">
+        <div class="spinner" v-if="loading">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
         <gfc v-on:refresh="getRandom()" :random="random"></gfc>
         <categories :categories="categories" :category="category" :transform="transformCategory" :set="setCategory"></categories>
     </div>
