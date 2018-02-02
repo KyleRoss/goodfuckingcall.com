@@ -91,8 +91,9 @@ body {
 }
 
 .spinner {
-    margin: 100px auto 0;
-    width: 70px;
+    margin: 0px auto 0;
+    margin-bottom: 45px;
+    width: 90px;
     text-align: center;
 }
 
