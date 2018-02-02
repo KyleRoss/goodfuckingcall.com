@@ -82,6 +82,10 @@ body {
     font-style: italic;
 }
 
+.error {
+    color: #ca3030;
+}
+
 .mt-20 {
     margin-top: 20px;
 }

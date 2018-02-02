@@ -10,10 +10,10 @@ const moment = require('moment');
 const sm = require('sitemap');
 const path = require('path');
 const fs = require('fs-extra');
+const crypto = require('crypto');
 
 const CATEGORIES_DIR = path.join(__dirname, 'categories');
 const CATEGORIES_JSON = path.join(__dirname, 'categories.json');
-const ALL_JSON = path.join(CATEGORIES_DIR, 'all.json');
 const REDIRECTS_FILE = path.join(__dirname, '_redirects');
 const SITEMAP = path.join(__dirname, 'sitemap.xml');
 
@@ -32,17 +32,21 @@ const copyFiles = [
 ];
 
 let categories = fs.readdirSync(CATEGORIES_DIR);
-let cats = ['all'],
-    byCat = {},
-    all = [];
+let cats = ['random'],
+    byCat = {};
 
 categories.forEach(cat => {
-    if(cat === 'README.md' || cat === 'all.json') return;
+    if(cat === 'README.md') return;
     let catName = path.basename(cat, '.json');
     cats.push(catName);
     
     let content = fs.readJSONSync(path.join(CATEGORIES_DIR, cat));
-    all = all.concat(content);
+    content = content.map(function(item) {
+        return {
+            id: crypto.createHash('md5').update(item).digest('hex'),
+            text: item
+        };
+    });
     byCat[catName] = content;
 });
 
@@ -50,15 +54,10 @@ gulp.task('categories', function(done) {
     console.log('Writing categories.json...');
     fs.outputJSONSync(CATEGORIES_JSON, cats);
     
-    console.log('Writing all.json...');
-    fs.outputJSONSync(ALL_JSON, all);
-    
     console.log('Writing byCategory.json...');
     fs.outputJSONSync(BYCAT_JSON, byCat);
 
     let redirects = cats.map(category => `/${category} /index.html 200`);
-    redirects.push('/api/wtf /.netlify/functions/wtf 200');
-    redirects.push('/api/categories /.netlify/functions/categories 200');
     console.log('Writing _redirects file...');
     fs.outputFileSync(REDIRECTS_FILE, redirects.join("\n"));
     

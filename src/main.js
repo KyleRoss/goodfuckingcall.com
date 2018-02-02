@@ -1,17 +1,16 @@
 window.GFC = window.GFC || new Vue({
     el: '#app',
     data: {
-        sarcasms: [],
         categories: [],
         category: null,
-        random: '',
+        random: {},
         
         loading: true
     },
     
     methods: {
         getCategories() {
-            pegasus('/categories.json').then(cats => {
+            pegasus('/.netlify/functions/categories').then(cats => {
                 this.categories = cats;
             }, e => {
                 this.categories = [];
@@ -19,29 +18,20 @@ window.GFC = window.GFC || new Vue({
             });
         },
         
-        getSarcasms() {
+        getRandom() {
             this.loading = true;
-            let file = `/categories/${this.category}.json`;
             
-            pegasus(file).then(fun => {
-                this.setSarcasms(fun.length? fun : ['Category is empty']);
+            let url = '/.netlify/functions/wtf';
+            url += '?category=' + this.category;
+            
+            pegasus(url).then(fun => {
+                this.random = fun;
+                this.loading = false;
             }, e => {
                 console.error(e);
-                this.setSarcasms(['This site is broken']);
+                this.random = { error: 'This site is broken :skull:' };
+                this.loading = false;
             });
-        },
-        
-        setSarcasms(sarcasms) {
-            this.sarcasms = sarcasms;
-            this.getRandom();
-            this.loading = false;
-        },
-        
-        getRandom() {
-            let funs = this.sarcasms,
-                rand = funs[Math.floor(Math.random()*funs.length)];
-                
-            this.random = rand;
         },
         
         transformCategory(name) {
@@ -50,18 +40,18 @@ window.GFC = window.GFC || new Vue({
         },
         
         setCategory(category) {
-            this.category = category || 'all';
+            this.category = category || 'random';
             document.title = 
-                this.category !== 'all'?
+                this.category !== 'random'?
                     `${this.transformCategory(this.category)}, Good Fucking Call Bro...` :
                     'Good Fucking Call';
             
-            this.getSarcasms();
+            this.getRandom();
         }
     },
     
     created() {
-        this.setCategory(window.location.pathname.replace(/^\//, '') || 'all');
+        this.setCategory(window.location.pathname.replace(/^\//, '') || 'random');
         this.getCategories();
     }
 });
