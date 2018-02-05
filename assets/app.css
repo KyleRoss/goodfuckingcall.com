@@ -47,11 +47,12 @@ table {
 body {
     font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     font-size: 1rem;
+    padding: 30px;
 }
 
 .sarcasm {
     font-size: 1.8rem;
-    margin: 100px 0;
+    margin: 75px 0;
 }
 
 .sarcasm .text {
