@@ -82,6 +82,15 @@ body {
     font-style: italic;
 }
 
+code {
+    font-family: Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+    padding: .2rem .4rem;
+    font-size: 90%;
+    color: #bd4147;
+    background-color: #f7f7f9;
+    border-radius: .25rem;
+}
+
 .error {
     color: #ca3030;
 }
