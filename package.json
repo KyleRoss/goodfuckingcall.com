@@ -28,7 +28,7 @@
     "gulp-iife": "^0.3.0",
     "gulp-live-server": "0.0.31",
     "gulp-uglify": "^3.0.0",
-    "moment": "^2.20.1",
+    "moment": "^2.29.4",
     "netlify-lambda": "^0.2.0",
     "sitemap": "^1.13.0"
   }
